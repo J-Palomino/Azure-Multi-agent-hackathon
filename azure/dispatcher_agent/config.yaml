@@ -1,0 +1,5 @@
+# Configurations for dispatcher agent
+sub_agents:
+  - public_works
+  - animal_control
+  - waste_management
