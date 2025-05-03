@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>openDispatch Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7fa; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 40px auto; background: #fff; padding: 30px 40px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        h1 { color: #2a3a4b; }
+        form { margin-bottom: 30px; }
+        label { font-weight: bold; }
+        input[type="text"] { padding: 7px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px; }
+        button { background: #2e6edb; color: white; border: none; padding: 8px 18px; border-radius: 5px; font-size: 1em; cursor: pointer; }
+        button:hover { background: #184e9e; }
+        .log-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .log-table th, .log-table td { border: 1px solid #ddd; padding: 8px; }
+        .log-table th { background: #f0f4fa; color: #2a3a4b; }
+        .transcription { font-family: monospace; color: #444; background: #f9f9f9; border-radius: 4px; padding: 6px 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>openDispatch Demo</h1>
+        <form method="post">
+            <label for="caller_id">Simulate Incoming Call (Caller ID):</label>
+            <input type="text" name="caller_id" id="caller_id" placeholder="e.g. 555-1234">
+            <button type="submit">Simulate Call</button>
+        </form>
+        <h2>Live Call Log</h2>
+        <table class="log-table">
+            <tr>
+                <th>Time</th>
+                <th>Caller ID</th>
+                <th>Routed To</th>
+                <th>Transcription</th>
+            </tr>
+            {% for entry in call_log[::-1] %}
+            <tr>
+                <td>{{ entry.timestamp }}</td>
+                <td>{{ entry.caller_id }}</td>
+                <td>{{ entry.routed_to }}</td>
+                <td class="transcription">{{ entry.transcription }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

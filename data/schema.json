@@ -1,0 +1,7 @@
+{
+  "call_id": "string",
+  "timestamp": "datetime",
+  "caller_id": "string",
+  "routed_to": "string",
+  "conversation_log": "array"
+}
